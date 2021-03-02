@@ -277,11 +277,11 @@ public class AddTraining extends AppCompatActivity implements View.OnClickListen
     }
 
     public class Background extends AsyncTask<String, Void, ResultSet> {
-        private static final String LIBRARY = "com.mysql.jdbc.Driver";
-        private static final String USERNAME = "sql12387699";
-        private static final String DB_NAME = "sql12387699";
-        private static final String PASSWORD = "UMmjeekHxr";
-        private static final String SERVER = "sql12.freemysqlhosting.net";
+        private String LIBRARY = getString(R.string.db_library);
+        private String USERNAME = getString(R.string.db_username);
+        private String DB_NAME = getString(R.string.db_name);
+        private String PASSWORD = getString(R.string.db_password);
+        private String SERVER = getString(R.string.db_server);
 
         public static final int FETCH_DEPARTMENT = 30;
         public static final int ADD_TRAINING = 40;

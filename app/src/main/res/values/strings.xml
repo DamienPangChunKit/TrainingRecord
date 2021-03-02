@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Training Record</string>
+    <string name="db_library" translatable="false">com.mysql.jdbc.Driver</string>
+    <string name="db_username" translatable="false">sql12387699</string>
+    <string name="db_name" translatable="false">sql12387699</string>
+    <string name="db_password" translatable="false">UMmjeekHxr</string>
+    <string name="db_server" translatable="false">sql12.freemysqlhosting.net</string>
 </resources>
