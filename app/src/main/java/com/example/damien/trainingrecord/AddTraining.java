@@ -26,9 +26,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import google.zxing.integration.android.IntentIntegrator;
 import google.zxing.integration.android.IntentResult;
@@ -71,6 +73,39 @@ public class AddTraining extends AppCompatActivity implements View.OnClickListen
         mSpinner = findViewById(R.id.spinnerDepartment);
 
         new Background(Background.FETCH_DEPARTMENT).execute();
+
+        Calendar calendar = Calendar.getInstance();
+        Date today = calendar.getTime();
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat2 = new SimpleDateFormat("HH:mm");
+        String todayDate = dateFormat.format(today);
+        String todayTime = dateFormat2.format(today);
+        String[] splitTimetoString = todayTime.split(":");
+        int splitTimeHour = Integer.parseInt(splitTimetoString[0]);
+        int splitTimeMinute = Integer.parseInt(splitTimetoString[1]);
+
+        int hour = splitTimeHour % 12;
+        String setAMPM = "";
+
+        if (hour == 0) {
+            hour = 12;
+        }
+
+        if (splitTimeHour > 12) {
+            setAMPM = "PM";
+        } else {
+            setAMPM = "AM";
+        }
+
+        if (splitTimeMinute < 10) {
+            ETTime.setText(hour + ":0" + splitTimeMinute + " " + setAMPM);
+        } else {
+            ETTime.setText(hour + ":" + splitTimeMinute + " " + setAMPM);
+        }
+
+
+        ETDate.setText("" + todayDate);
 
         ETDate.setInputType(InputType.TYPE_NULL);
         ETDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
